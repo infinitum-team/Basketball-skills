@@ -20,7 +20,7 @@ public class ShopItemInfo : MonoBehaviour
     [HideInInspector] public int index;
     [HideInInspector] public int price;
 
-
+    public shopItemStatus itemStatus;
     public void Refresh_UI()
     {
         priceText.text = price.ToString() + "$"; //MoneyCount.ConvertMoney(price);
@@ -55,4 +55,9 @@ public class ShopItemInfo : MonoBehaviour
         ShopManager.SetShopItemUnlockStatus(index, unlocked);
     }
 
+}
+[System.Serializable]
+public enum shopItemStatus
+{
+    bought, selected, locked
 }

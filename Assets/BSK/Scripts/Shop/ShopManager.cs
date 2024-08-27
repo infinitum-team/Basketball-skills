@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using MM;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-[System.Serializable]
-public enum shopItemStatus
-{
-    bought, selected, locked
-}
 
 
 
-public class ShopManager : MonoBehaviour
+
+
+public class ShopManager : Singleton<ShopManager>
 {
 
-    public GameObject ItemUIPrefab;
- 
+    public GameObject ItemsUIPanel;
+    public List<ShopItemData> itemsHolder;
  
     
 
@@ -31,20 +29,6 @@ public class ShopManager : MonoBehaviour
     }
 
 
-}
-[System.Serializable]
-public class ShopItemData
-{
-    public string Name;
-
-    [Space(10)]
-    public GameObject prefab;
-    //public bool DisplayPreview = false;
-    public Sprite UI_Icon;
-
-    [Space(10)]
-    public bool unlocked;
-    public int price;
 }
 
 
