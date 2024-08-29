@@ -8,7 +8,7 @@ using UnityEngine;
 public class ShopItemData : ScriptableObject
 {
   public string Name;
-
+  public int index;
   [Space(10)]
   public GameObject prefab;
   //public bool DisplayPreview = false;
