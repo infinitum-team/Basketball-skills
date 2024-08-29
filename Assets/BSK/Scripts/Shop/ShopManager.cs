@@ -11,9 +11,10 @@ using UnityEngine.UI;
 
 
 
-public class ShopManager : Singleton<ShopManager>
-{
-
+public class ShopManager : Singleton<ShopManager> {
+    public ShopItemInfo selectedItem;
+    public Button buyButton;
+    public ConfirmationPanel confirmationPanel;
     public GameObject ItemsUIPanel;
     public GameObject shopItemPrefab;
     public List<ShopItemData> itemsHolder;
@@ -21,6 +22,7 @@ public class ShopManager : Singleton<ShopManager>
 
     private void Start() {
         SyncShopItems();
+        buyButton.onClick.AddListener(OnBuyButtonClick);
     }
 
     private void SyncShopItems() {
@@ -47,7 +49,9 @@ public class ShopManager : Singleton<ShopManager>
         PlayerPrefs.SetInt(Constants.ItemUnlockStatusPlayerPrefsTag +index.ToString(), (int)status);
     }
 
-
+    private void OnBuyButtonClick() {
+        
+    }
 }
 
 
