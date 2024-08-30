@@ -68,6 +68,10 @@ public class ShopItemInfo : MonoBehaviour
             ShopManager.Instance.DeselectAll();
             selectImage.gameObject.SetActive(true);
             itemStatus = ShopItemStatus.selected;
+            if (!unlocked) {
+                ShopManager.Instance.buyButton.gameObject.SetActive(true);
+            }
+            ShopManager.Instance.selectedItem = this;
         } else {
             Deselect();
         }
@@ -81,6 +85,7 @@ public class ShopItemInfo : MonoBehaviour
             itemStatus = ShopItemStatus.locked;
         }
         selectImage.gameObject.SetActive(false);
+        ShopManager.Instance.buyButton.gameObject.SetActive(false);
     }
 
     public void GetData()
@@ -91,6 +96,10 @@ public class ShopItemInfo : MonoBehaviour
     public void SetData()
     {
    
+    }
+
+    public void TryToPurchaseItem() {
+        
     }
 
 }
