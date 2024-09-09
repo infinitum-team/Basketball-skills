@@ -10,12 +10,12 @@ public class ShopItemInfo : MonoBehaviour
     public Image Icon;
     public Image selectImage;
     public Image lockedImage;
-
+    public GameObject boughtVisual;
     [Space(5)]
     public Button button;
     public Text priceText;
     public GameObject associatedItemPrefab;
-
+    public GameObject selectWhenLockedVisual;
     [HideInInspector] public int index;
     [HideInInspector] public int price;
 
@@ -67,9 +67,13 @@ public class ShopItemInfo : MonoBehaviour
         if (!(itemStatus == ShopItemStatus.selected)) {
             ShopManager.Instance.DeselectAll();
             selectImage.gameObject.SetActive(true);
+            boughtVisual.gameObject.SetActive(false);
             itemStatus = ShopItemStatus.selected;
             if (!unlocked) {
                 ShopManager.Instance.buyButton.gameObject.SetActive(true);
+                selectWhenLockedVisual.gameObject.SetActive(true);
+                selectImage.gameObject.SetActive(false);
+                boughtVisual.gameObject.SetActive(false);
             }
             ShopManager.Instance.selectedItem = this;
         } else {
@@ -81,8 +85,11 @@ public class ShopItemInfo : MonoBehaviour
     public void Deselect() {
         if (unlocked) {
             itemStatus = ShopItemStatus.bought;
+            boughtVisual.gameObject.SetActive(true);
+            selectImage.gameObject.SetActive(false);
         } else {
             itemStatus = ShopItemStatus.locked;
+            selectWhenLockedVisual.gameObject.SetActive(false);
         }
         selectImage.gameObject.SetActive(false);
         ShopManager.Instance.buyButton.gameObject.SetActive(false);

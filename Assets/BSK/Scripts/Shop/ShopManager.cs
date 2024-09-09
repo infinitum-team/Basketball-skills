@@ -19,7 +19,6 @@ public class ShopManager : Singleton<ShopManager> {
     public GameObject shopItemPrefab;
     public List<ShopItemData> itemsHolder;
     public List<ShopItemInfo> shopItems;
-
     private void Start() {
         SyncShopItems();
         buyButton.onClick.AddListener(OnBuyButtonClick);
