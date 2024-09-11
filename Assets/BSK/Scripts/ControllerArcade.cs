@@ -247,7 +247,7 @@ public class ControllerArcade : MonoBehaviour {
 		this.score += score;
 		scoreTxt.text = this.score.ToString();
 		if(this.score > PlayerPrefs.GetInt("arcadeBestScore",0)){
-			bestScoreTxt.text = "BEST SCORE - " +this.score.ToString();
+			bestScoreTxt.text = "" +this.score.ToString();
 			PlayerPrefs.SetInt("arcadeBestScore",this.score);
 			if(lastRecord > 0 && !hitRecord) {
 				HitNewRecord();
@@ -295,7 +295,7 @@ public class ControllerArcade : MonoBehaviour {
 		UpdateAimDotsNum();
 		scoreTxt.text = this.score.ToString();
 		lastRecord = PlayerPrefs.GetInt("arcadeBestScore",0);
-		bestScoreTxt.text = "BEST SCORE - " +lastRecord;
+		bestScoreTxt.text = "" +lastRecord;
 	}
 	
 	private Vector3 GetRandomPosInCollider(){
