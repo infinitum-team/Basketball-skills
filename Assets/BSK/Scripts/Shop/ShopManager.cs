@@ -39,12 +39,12 @@ public class ShopManager : Singleton<ShopManager> {
             shopItems[i].Deselect();
         }
     }
-    public static ShopItemStatus GetShopItemStatus(int index)
+    public  ShopItemStatus GetShopItemStatus(int index)
     {
-        int prefValue=PlayerPrefs.GetInt(Constants.ItemUnlockStatusPlayerPrefsTag + index.ToString(), 3);
+        int prefValue=PlayerPrefs.GetInt(Constants.ItemUnlockStatusPlayerPrefsTag + index.ToString(), 4);
         return (ShopItemStatus)prefValue;
     }
-    public static void SetShopItemStatus(int index, ShopItemStatus status)
+    public  void SetShopItemStatus(int index, ShopItemStatus status)
     {
         PlayerPrefs.SetInt(Constants.ItemUnlockStatusPlayerPrefsTag +index.ToString(), (int)status);
     }

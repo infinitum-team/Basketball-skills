@@ -16,8 +16,8 @@ public class ShopItemInfo : MonoBehaviour
     public Text priceText;
     public GameObject associatedItemPrefab;
     public GameObject selectWhenLockedVisual;
-    [HideInInspector] public int index;
-    [HideInInspector] public int price;
+     public int index;
+     public int price;
 
     public ShopItemStatus itemStatus;
     public bool unlocked=false;
@@ -37,8 +37,9 @@ public class ShopItemInfo : MonoBehaviour
         price = itemPrice;
         priceText.text=itemPrice.ToString();
         itemStatus = shopItemStatus;
-        Debug.Log(itemStatus);
+       
         index = itemIndex;
+        Debug.Log(itemStatus+"  in Sync +"+ index);
         associatedItemPrefab = itemPrefab;
         switch (shopItemStatus) {
             case ShopItemStatus.locked:
@@ -46,8 +47,14 @@ public class ShopItemInfo : MonoBehaviour
             case ShopItemStatus.bought:
                 Unlock();
                 break;
-            case ShopItemStatus.selected:
-                Select();
+            case ShopItemStatus.selectedAndBought:
+                ShopManager.Instance.DeselectAll();
+                selectImage.gameObject.SetActive(true);
+                boughtVisual.gameObject.SetActive(false);
+                lockedImage.gameObject.SetActive(false);
+                ShopManager.Instance.selectedItem = this;
+                unlocked = true;
+                itemStatus = ShopItemStatus.selectedAndBought;
                 break;
           
         }
@@ -59,7 +66,10 @@ public class ShopItemInfo : MonoBehaviour
     private void Unlock()
     {
         //unlocked = true;
-        lockedImage.gameObject.SetActive(true); 
+        lockedImage.gameObject.SetActive(false);
+        boughtVisual.gameObject.SetActive(true);
+        itemStatus = ShopItemStatus.bought;
+        unlocked = true;
         SetData();
     }
 
@@ -69,13 +79,19 @@ public class ShopItemInfo : MonoBehaviour
             selectImage.gameObject.SetActive(true);
             boughtVisual.gameObject.SetActive(false);
             itemStatus = ShopItemStatus.selected;
+            ShopManager.Instance.selectedItem = this;
             if (!unlocked) {
                 ShopManager.Instance.buyButton.gameObject.SetActive(true);
                 selectWhenLockedVisual.gameObject.SetActive(true);
                 selectImage.gameObject.SetActive(false);
                 boughtVisual.gameObject.SetActive(false);
+            } else {
+                
+                Debug.Log("sdfsdfsdfsdfsdfds"+ itemStatus);
+                itemStatus = ShopItemStatus.selectedAndBought;
+                ShopManager.Instance.SetShopItemStatus(index,itemStatus);
             }
-            ShopManager.Instance.selectedItem = this;
+            
         } else {
             Deselect();
         }
@@ -93,6 +109,7 @@ public class ShopItemInfo : MonoBehaviour
         }
         selectImage.gameObject.SetActive(false);
         ShopManager.Instance.buyButton.gameObject.SetActive(false);
+        ShopManager.Instance.SetShopItemStatus(index,itemStatus);
     }
 
     public void GetData()
@@ -102,16 +119,27 @@ public class ShopItemInfo : MonoBehaviour
 
     public void SetData()
     {
-   
+      
     }
 
     public void TryToPurchaseItem() {
-        
+        Debug.Log("TryToPurchaseItem");
+        ShopManager.Instance.confirmationPanel.gameObject.SetActive(false);
+        if (price<=GameData.Instance.TotalScore) {
+            GameData.Instance.TotalScore -= price;
+            itemStatus = ShopItemStatus.selectedAndBought;
+            unlocked = true;
+            lockedImage.gameObject.SetActive(false);
+            boughtVisual.gameObject.SetActive(true);
+            ShopManager.Instance.SetShopItemStatus(index, itemStatus);
+        } else {
+            Debug.Log("No money no funny");
+        }
     }
 
 }
 [System.Serializable]
 public enum ShopItemStatus: int
 {
-    bought=1, selected=2, locked=3
+    bought=1, selected=2,selectedAndBought=3, locked=4
 }
