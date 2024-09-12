@@ -47,6 +47,9 @@ public class ShopManager : Singleton<ShopManager> {
     public  void SetShopItemStatus(int index, ShopItemStatus status)
     {
         PlayerPrefs.SetInt(Constants.ItemUnlockStatusPlayerPrefsTag +index.ToString(), (int)status);
+        if (status==ShopItemStatus.selectedAndBought) {
+            PlayerPrefs.SetInt(Constants.currentBallIndex,index);
+        }
     }
 
     private void OnBuyButtonClick() {

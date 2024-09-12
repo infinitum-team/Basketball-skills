@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using MM;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
-{
-   
+public class GameManager : Singleton<GameManager> {
+   public List<ShopItemData> balls;
 }

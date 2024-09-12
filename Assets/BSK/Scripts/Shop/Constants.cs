@@ -7,4 +7,6 @@ public static class Constants
     public static string lastSelectedItemIndexPlayerPrefsTag = "lastSelectedItemIndex";
     public static string ItemUnlockStatusPlayerPrefsTag = "ItemUnlockStatus";
     public static string totalCoinsAmount="totalCoinsAmount";
+    public static string currentBallIndex = "currentBallIndex";
+    public static string currentLevelIndex = "currentLevelIndex";
 }

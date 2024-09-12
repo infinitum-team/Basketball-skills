@@ -111,7 +111,7 @@ public class Shooter : MonoBehaviour {
     }
 	
 	private void addBall(){
-		GameObject obj = (GameObject)Instantiate(BallPrefab);
+		GameObject obj = (GameObject)Instantiate(GameManager.Instance.balls[PlayerPrefs.GetInt(Constants.currentBallIndex,0)].prefab);
 		obj.SetActive(false);
 		obj.transform.parent = SpawnedObjects.transform;
 		Balls.Add(obj);
