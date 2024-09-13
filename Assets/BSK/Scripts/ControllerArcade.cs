@@ -17,6 +17,8 @@ public class ControllerArcade : MonoBehaviour {
 	
 	public Text ballsCountTxt;
 	public Text scoreTxt;
+	public Text resultScoreTxt;
+	public Text coinsEarnedTxt;
 	public Text bestScoreTxt;
 	public Text plusScoreTxt;
 	public Text plusBallTxt;
@@ -31,7 +33,7 @@ public class ControllerArcade : MonoBehaviour {
 	private GameObject ring;
 	private Shooter shooter;
 	private AudioSource thisAudio;
-	
+
 	private int currentBallsCount;					//Current amount of balls left to throw
 	private int score;								//Current score
 	private int comboScore;							//Current amount of combo score. Increases when you have goals in a row. Resets when you fail a ball.
@@ -246,6 +248,9 @@ public class ControllerArcade : MonoBehaviour {
 	public void AddScore(int score) {
 		this.score += score;
 		scoreTxt.text = this.score.ToString();
+		resultScoreTxt.text = this.score.ToString();
+		GameData.Instance.TotalScore += this.score / 2;
+		coinsEarnedTxt.text = (this.score / 2).ToString();
 		if(this.score > PlayerPrefs.GetInt("arcadeBestScore",0)){
 			bestScoreTxt.text = "" +this.score.ToString();
 			PlayerPrefs.SetInt("arcadeBestScore",this.score);
@@ -294,6 +299,7 @@ public class ControllerArcade : MonoBehaviour {
 		UpdateSpawnCollider();
 		UpdateAimDotsNum();
 		scoreTxt.text = this.score.ToString();
+		resultScoreTxt.text = this.score.ToString();
 		lastRecord = PlayerPrefs.GetInt("arcadeBestScore",0);
 		bestScoreTxt.text = "" +lastRecord;
 	}
