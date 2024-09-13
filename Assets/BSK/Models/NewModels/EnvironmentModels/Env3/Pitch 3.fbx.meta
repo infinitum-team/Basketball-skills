@@ -208,22 +208,22 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Basket_Metallic
-    second: {fileID: 2800000, guid: 2bd01a0aff74541b0b29e72df75ca17c, type: 3}
+    second: {fileID: 2800000, guid: 51e7b491cf300c449b4f06fc707c8d38, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Basket_Normal_OpenGL
-    second: {fileID: 2800000, guid: 86a85b4e9283d47e1b2265df622a88b0, type: 3}
+    second: {fileID: 2800000, guid: 7d2e47e4c153daa4bb749da2d24304a6, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: ULTIMATE-TEXTURE-ATLAS-v1-0
-    second: {fileID: 2800000, guid: 70ebc903c1c214fac8602df1a4c55237, type: 3}
+    second: {fileID: 2800000, guid: c167cee583453034da85d7663c877b5c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: image (82)
-    second: {fileID: 2800000, guid: 553de2e609f4049bfb0a22d6de3e2c91, type: 3}
+    second: {fileID: 2800000, guid: 00bd0026637246c43a8531597db97a13, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -255,7 +255,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -310,7 +310,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 2
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
