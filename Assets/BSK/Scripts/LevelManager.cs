@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using MM;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class LevelManager : Singleton<LevelManager> {
+   public List<GameObject> levels;
+   private GameObject currentLevel;
+     void Start() {
+      //UnlockNewLevel(4);
+     SpawnLevel();
+   }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   public void UnlockNewLevel(int index) {
+      PlayerPrefs.SetInt(Constants.maxLevelIndex,index);
+      LevelUiManager.Instance.levelUiItems[index].Unlock();
+   }
+
+   public void SpawnLevel() {
+      if (currentLevel!=null) {
+         Destroy(currentLevel);
+      }
+      currentLevel = Instantiate(levels[PlayerPrefs.GetInt(Constants.currentLevelIndex)]);
+   }
 }

@@ -9,4 +9,5 @@ public static class Constants
     public static string totalCoinsAmount="totalCoinsAmount";
     public static string currentBallIndex = "currentBallIndex";
     public static string currentLevelIndex = "currentLevelIndex";
+    public static string maxLevelIndex = "maxLevelIndex";
 }
