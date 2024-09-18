@@ -10,4 +10,5 @@ public static class Constants
     public static string currentBallIndex = "currentBallIndex";
     public static string currentLevelIndex = "currentLevelIndex";
     public static string maxLevelIndex = "maxLevelIndex";
+    public static string levelUnclokProgress = "levelUnlockProgress";
 }

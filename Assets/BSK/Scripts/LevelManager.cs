@@ -22,4 +22,6 @@ public class LevelManager : Singleton<LevelManager> {
       }
       currentLevel = Instantiate(levels[PlayerPrefs.GetInt(Constants.currentLevelIndex)]);
    }
+
+  
 }
