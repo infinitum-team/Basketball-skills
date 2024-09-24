@@ -84,6 +84,7 @@ public class ShopItemInfo : MonoBehaviour
                 ShopManager.Instance.buyButton.gameObject.SetActive(true);
                 selectWhenLockedVisual.gameObject.SetActive(true);
                 selectImage.gameObject.SetActive(false);
+                selectWhenLockedVisual.gameObject.SetActive(false);
                 boughtVisual.gameObject.SetActive(false);
             } else {
                 
