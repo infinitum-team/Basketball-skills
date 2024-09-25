@@ -84,7 +84,6 @@ public class ShopItemInfo : MonoBehaviour
                 ShopManager.Instance.buyButton.gameObject.SetActive(true);
                 selectWhenLockedVisual.gameObject.SetActive(true);
                 selectImage.gameObject.SetActive(false);
-                selectWhenLockedVisual.gameObject.SetActive(false);
                 boughtVisual.gameObject.SetActive(false);
             } else {
                 
@@ -125,7 +124,7 @@ public class ShopItemInfo : MonoBehaviour
 
     public void TryToPurchaseItem() {
         Debug.Log("TryToPurchaseItem");
-        ShopManager.Instance.confirmationPanel.gameObject.SetActive(false);
+        ShopManager.Instance.confirmationPanel.transform.parent.gameObject.SetActive(false);
         if (price<=GameData.Instance.TotalScore) {
             GameData.Instance.TotalScore -= price;
             itemStatus = ShopItemStatus.selectedAndBought;

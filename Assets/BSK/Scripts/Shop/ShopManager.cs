@@ -66,7 +66,7 @@ public class ShopManager : Singleton<ShopManager> {
     }
 
     private void OnBuyButtonClick() {
-        confirmationPanel.gameObject.SetActive(true);
+        confirmationPanel.transform.parent.gameObject.SetActive(true);
         confirmationPanel.yesButton.onClick.AddListener(selectedItem.TryToPurchaseItem);
     }
 }

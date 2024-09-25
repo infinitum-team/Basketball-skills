@@ -15,6 +15,6 @@ public class ConfirmationPanel : MonoBehaviour {
    
 
     public void OnNoButtonClick() {
-        gameObject.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
     }
 }
