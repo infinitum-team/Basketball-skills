@@ -20,6 +20,7 @@ public class ShopManager : Singleton<ShopManager> {
     public GameObject shopItemPrefab;
     public List<ShopItemData> itemsHolder;
     public List<ShopItemInfo> shopItems;
+    public List<GameObject> ObjectToActivateDeactivateOnOpen;
     private void Start() {
         SyncShopItems();
         buyButton.onClick.AddListener(OnBuyButtonClick);
@@ -49,6 +50,18 @@ public class ShopManager : Singleton<ShopManager> {
         PlayerPrefs.SetInt(Constants.ItemUnlockStatusPlayerPrefsTag +index.ToString(), (int)status);
         if (status==ShopItemStatus.selectedAndBought) {
             PlayerPrefs.SetInt(Constants.currentBallIndex,index);
+        }
+    }
+
+    public void OnShopOpen() {
+        foreach (var obj in ObjectToActivateDeactivateOnOpen) {
+            obj.gameObject.SetActive(false);
+        }
+    }
+
+    public void OnShopClose() {
+        foreach (var obj in ObjectToActivateDeactivateOnOpen) {
+            obj.gameObject.SetActive(true);
         }
     }
 

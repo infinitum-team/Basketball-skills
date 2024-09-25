@@ -9,6 +9,7 @@ public class LevelUiManager : Singleton<LevelUiManager>
 {
   public List<LevelUiItem> levelUiItems;
   public Button selectButton;
+  public List<GameObject> ObjectToActivateDeactivateOnOpen;
   private void Start() {
     selectButton.onClick.AddListener(OnSelectButtonClick);
     int maxLevelIndex = PlayerPrefs.GetInt(Constants.maxLevelIndex, 0);
@@ -29,5 +30,16 @@ public class LevelUiManager : Singleton<LevelUiManager>
 
   public void OnSelectButtonClick() {
     LevelManager.Instance.SpawnLevel();
+  }
+  public void OnLevelSelectOPen() {
+    foreach (var obj in ObjectToActivateDeactivateOnOpen) {
+      obj.gameObject.SetActive(false);
+    }
+  }
+
+  public void OnLevelSelectClose() {
+    foreach (var obj in ObjectToActivateDeactivateOnOpen) {
+      obj.gameObject.SetActive(true);
+    }
   }
 }
