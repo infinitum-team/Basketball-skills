@@ -24,7 +24,8 @@ public class ControllerTimeAttack : MonoBehaviour {
 	public Text plusDotsTxt;
 	public Transformer TimeIcon;
 	public BoxCollider spawnCollider;
-	
+	public Text resultScoreTxt;
+	public Text coinsEarnedTxt;
 	public bool debugAim;
 	
 	private GameObject ring;
@@ -228,6 +229,8 @@ public class ControllerTimeAttack : MonoBehaviour {
 	public void AddScore(int score) {
 		this.score += score;
 		scoreTxt.text = this.score.ToString();
+		resultScoreTxt.text = this.score.ToString();
+		coinsEarnedTxt.text = (this.score / 2).ToString();
 		if(this.score > PlayerPrefs.GetInt("timeAttackBestScore",0)){
 			bestScoreTxt.text = "BEST SCORE - " +this.score.ToString();
 			PlayerPrefs.SetInt("timeAttackBestScore",this.score);
