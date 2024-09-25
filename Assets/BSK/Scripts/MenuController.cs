@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MenuController : MonoBehaviour {
 	
 	public GameObject panelSettings;
 	public Toggle soundToggle;
 	public Toggle inverseAimToggle;
-	
+
+	public List<GameObject> ObjectsToDeactivateActivateOnSettings;
 	void Start(){
 		soundToggle.isOn = PlayerPrefs.GetInt("sound", 1) == 1 ? true : false;
 		AudioListener.volume = PlayerPrefs.GetInt("sound", 1);
@@ -31,6 +33,9 @@ public class MenuController : MonoBehaviour {
 	}
 	
 	public void switchSettings(){
+		foreach (var gObject in ObjectsToDeactivateActivateOnSettings) {
+			gObject.gameObject.SetActive(panelSettings.activeInHierarchy);
+		}
 		panelSettings.SetActive(!panelSettings.activeInHierarchy);
 	}
 	

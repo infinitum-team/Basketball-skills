@@ -46,6 +46,9 @@ public class ControllerDistance : MonoBehaviour {
 	}
 	
 	void ShowStartPanel(){
+		return;
+		GameController.data.StartPlay();
+		return;
 		if(PlayerPrefs.GetInt("distanceHideHelp",0)== 0)
 			startPanel.SetActive(true);
 		else

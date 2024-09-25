@@ -77,8 +77,15 @@ public class ControllerTimeAttack : MonoBehaviour {
 		shooter.newBallPosition = GetRandomPosInCollider();
 	}
 	
-	void ShowStartPanel(){
-		startPanel.SetActive(true);
+	void ShowStartPanel() {
+		return;
+		StartCoroutine(StartGame());
+		//	startPanel.SetActive(true);
+	}
+
+	private IEnumerator StartGame() {
+		yield return new WaitForSeconds(0.5f);
+		GameController.data.StartPlay();
 	}
 	
 	void HideStartPanel(){

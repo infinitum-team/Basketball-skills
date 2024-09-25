@@ -84,6 +84,9 @@ public class ControllerArcade : MonoBehaviour {
 	}
 	
 	void ShowStartPanel(){
+		return;
+		GameController.data.StartPlay();
+		return;
 		if(PlayerPrefs.GetInt("arcadeHideHelp",0)== 0)
 			startPanel.SetActive(true);
 		else

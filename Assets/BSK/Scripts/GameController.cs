@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour {
 	
 	void Start(){
 		shooter.inverseAim = PlayerPrefs.GetInt("inverseAim", 0) == 1 ? true : false;
+		StartPlay();
 	}
 	
 	void Update () {
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour {
 	}
 	
 	public void StartPlay(){
+		Debug.Log("Start Play");
 		isPlaying = true;
 		gameState = State.InGame;
 		shooter.spawnBall();
@@ -59,6 +61,7 @@ public class GameController : MonoBehaviour {
 	}
 	
 	public void togglePause(){
+		Debug.Log("Try to Pause");
 		if(gameState == State.StartUp || gameState == State.Complete)
 			return;
 		isPlaying = !isPlaying;
