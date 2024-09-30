@@ -96,8 +96,9 @@ public class ControllerDistance : MonoBehaviour {
 		if(deltaDistance > 0) {
 			plusDistanceTxt.text = "+"+deltaDistance+"m";
 			plusDistanceTxt.color = Color.yellow;
-			resultScoreTxt.text = deltaDistance.ToString();
-			coinsEarnedTxt.text = (deltaDistance/ 2).ToString();
+			resultScoreTxt.text = distance.ToString();
+			coinsEarnedTxt.text = (distance/ 2).ToString();
+			GameData.Instance.TotalScore += deltaDistance / 2;
 			GameData.Instance.SetLevelUnlockProgress(distance);
 		} else {
 			plusDistanceTxt.text = deltaDistance.ToString()+"m";

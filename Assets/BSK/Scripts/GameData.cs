@@ -8,12 +8,12 @@ public class GameData : Singleton<GameData> {
   private int _totalScore;
   public UnityEvent onTotalScoreChanged;
 
-   static float amountToUnlockLevel=100;
+   static float amountToUnlockLevel=250;
   public int TotalScore {
     get { return _totalScore; }
     set {
       _totalScore = value;
-      PlayerPrefs.SetInt(Constants.totalCoinsAmount, _totalScore);
+      PlayerPrefs.SetInt(Constants.totalCoinsAmount, PlayerPrefs.GetInt(Constants.totalCoinsAmount)+ _totalScore);
       onTotalScoreChanged.Invoke();
     }
   }

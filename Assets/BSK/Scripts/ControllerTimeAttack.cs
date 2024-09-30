@@ -238,6 +238,7 @@ public class ControllerTimeAttack : MonoBehaviour {
 		scoreTxt.text = this.score.ToString();
 		resultScoreTxt.text = this.score.ToString();
 		coinsEarnedTxt.text = (this.score / 2).ToString();
+		GameData.Instance.TotalScore += score / 2;
 		GameData.Instance.SetLevelUnlockProgress(this.score);
 		if(this.score > PlayerPrefs.GetInt("timeAttackBestScore",0)){
 			bestScoreTxt.text = "BEST SCORE - " +this.score.ToString();

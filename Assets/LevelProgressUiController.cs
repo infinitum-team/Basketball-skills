@@ -18,7 +18,7 @@ public class LevelProgressUiController : MonoBehaviour {
   Debug.Log(maxUnlockedLevelId+" Max unlocked LevelID");
   if (maxUnlockedLevelId+1>=levelIcons.Count) {
    Debug.Log("Levels maxed");
-   //Destroy(gameObject);
+    this.gameObject.SetActive(false);
    return;
   } else {
    
