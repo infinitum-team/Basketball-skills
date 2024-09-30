@@ -8,7 +8,7 @@ public class GameData : Singleton<GameData> {
   private int _totalScore;
   public UnityEvent onTotalScoreChanged;
 
-  public float amountToUnlockLevel=1;
+   static float amountToUnlockLevel=100;
   public int TotalScore {
     get { return _totalScore; }
     set {
@@ -19,9 +19,16 @@ public class GameData : Singleton<GameData> {
   }
   public void SetLevelUnlockProgress(int score) {
     float result=(score / amountToUnlockLevel);
-    Debug.Log("Result ---- "+result);
-    PlayerPrefs.SetFloat(Constants.levelUnclokProgress,result);
+    Debug.Log("Amount To Unlock level: "+amountToUnlockLevel);
+    Debug.Log("Score: "+score+" Result ---- "+result);
+    if (result>=GetLevelUnlockProgress()) {
+      PlayerPrefs.SetFloat(Constants.levelUnclokProgress,result);
+    } else {
+      PlayerPrefs.SetFloat(Constants.levelUnclokProgress,result+GetLevelUnlockProgress());
+    }
+   
   }
+ 
 
   public float  GetLevelUnlockProgress() {
     return PlayerPrefs.GetFloat(Constants.levelUnclokProgress, 0);
@@ -30,6 +37,6 @@ public class GameData : Singleton<GameData> {
 
   void Start() {
     //Test
-    TotalScore = 5000;
+    //TotalScore = 5000;
   }
 }

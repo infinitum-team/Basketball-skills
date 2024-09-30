@@ -13,6 +13,8 @@ public class ControllerDistance : MonoBehaviour {
 	public Text bestDistanceTxt;
 	public Text plusDistanceTxt;
 	
+	public Text resultScoreTxt;
+	public Text coinsEarnedTxt;
 	public bool debugAim;
 	
 	private Shooter shooter;
@@ -94,6 +96,9 @@ public class ControllerDistance : MonoBehaviour {
 		if(deltaDistance > 0) {
 			plusDistanceTxt.text = "+"+deltaDistance+"m";
 			plusDistanceTxt.color = Color.yellow;
+			resultScoreTxt.text = deltaDistance.ToString();
+			coinsEarnedTxt.text = (deltaDistance/ 2).ToString();
+			GameData.Instance.SetLevelUnlockProgress(distance);
 		} else {
 			plusDistanceTxt.text = deltaDistance.ToString()+"m";
 			plusDistanceTxt.color = Color.red;

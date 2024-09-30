@@ -11,8 +11,8 @@ public class MenuController : MonoBehaviour {
 
 	public List<GameObject> ObjectsToDeactivateActivateOnSettings;
 	void Start(){
-		soundToggle.isOn = PlayerPrefs.GetInt("sound", 1) == 1 ? true : false;
-		AudioListener.volume = PlayerPrefs.GetInt("sound", 1);
+		soundToggle.isOn = PlayerPrefs.GetFloat(Constants.soundlevel, 1) >= 1 ? true : false;
+		AudioListener.volume = PlayerPrefs.GetInt(Constants.soundlevel, 1);
 		inverseAimToggle.isOn = PlayerPrefs.GetInt("inverseAim", 0) == 1 ? true : false;
 	}
 	
@@ -40,8 +40,8 @@ public class MenuController : MonoBehaviour {
 	}
 	
 	public void switchSound(){
-		PlayerPrefs.SetInt("sound", PlayerPrefs.GetInt("sound", 1) == 1 ? 0 : 1);
-		AudioListener.volume = PlayerPrefs.GetInt("sound", 1);
+		PlayerPrefs.GetFloat(Constants.soundlevel, PlayerPrefs.GetFloat(Constants.soundlevel, 1) >= 1 ? 0 : 1);
+		AudioListener.volume = PlayerPrefs.GetFloat(Constants.soundlevel, 1);
 	}
 	
 	public void switchShadow(){

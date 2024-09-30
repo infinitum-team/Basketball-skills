@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour {
 		shooter = GameObject.Find("Shooter").GetComponent<Shooter>();
 		BroadcastMessage("ShowStartPanel");
 		gameState = State.StartUp;
-		AudioListener.volume = PlayerPrefs.GetInt("sound", 1);
+		AudioListener.volume = PlayerPrefs.GetFloat(Constants.soundlevel, 1);
 	}
 	
 	void Start(){

@@ -11,4 +11,6 @@ public static class Constants
     public static string currentLevelIndex = "currentLevelIndex";
     public static string maxLevelIndex = "maxLevelIndex";
     public static string levelUnclokProgress = "levelUnlockProgress";
+    public static string soundlevel = "sound";
+    public static string vfxLevel="vfx";
 }
