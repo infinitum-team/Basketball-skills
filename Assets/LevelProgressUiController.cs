@@ -21,8 +21,7 @@ public class LevelProgressUiController : MonoBehaviour {
    //Destroy(gameObject);
    return;
   } else {
-   currentLvlImage.sprite = levelIcons[maxUnlockedLevelId];
-   nextLvlImage.sprite = levelIcons[maxUnlockedLevelId + 1];
+   
    fillerImage.fillAmount=GameData.Instance.GetLevelUnlockProgress();
    Debug.Log("fileer "+fillerImage.fillAmount);
    if (fillerImage.fillAmount>=1) {
@@ -30,6 +29,8 @@ public class LevelProgressUiController : MonoBehaviour {
     PlayerPrefs.SetFloat(Constants.levelUnclokProgress,0);
     LevelManager.Instance.UnlockNewLevel(maxUnlockedLevelId+1);
    }
+   currentLvlImage.sprite = levelIcons[PlayerPrefs.GetInt(Constants.maxLevelIndex,0)];
+   nextLvlImage.sprite = levelIcons[PlayerPrefs.GetInt(Constants.maxLevelIndex,0) + 1];
   }
   
  }

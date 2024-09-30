@@ -13,6 +13,7 @@ public class LevelUiManager : Singleton<LevelUiManager>
   private void Start() {
     selectButton.onClick.AddListener(OnSelectButtonClick);
     int maxLevelIndex = PlayerPrefs.GetInt(Constants.maxLevelIndex, 0);
+    Debug.Log(maxLevelIndex+" max level index in UI manager");
     int selectedLevelIndex = PlayerPrefs.GetInt(Constants.currentLevelIndex,0);
     for (int i = 0; i <= maxLevelIndex; i++) {
       levelUiItems[i].Unlock();
