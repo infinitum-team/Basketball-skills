@@ -10,10 +10,13 @@ public class GameData : Singleton<GameData> {
 
    static float amountToUnlockLevel=250;
   public int TotalScore {
-    get { return _totalScore; }
+    get {
+      _totalScore = PlayerPrefs.GetInt(Constants.totalCoinsAmount);
+      return _totalScore;
+    }
     set {
-      _totalScore = value;
-      PlayerPrefs.SetInt(Constants.totalCoinsAmount, PlayerPrefs.GetInt(Constants.totalCoinsAmount)+ _totalScore);
+      _totalScore = value+PlayerPrefs.GetInt(Constants.totalCoinsAmount);
+      PlayerPrefs.SetInt(Constants.totalCoinsAmount, _totalScore);
       onTotalScoreChanged.Invoke();
     }
   }
@@ -37,6 +40,7 @@ public class GameData : Singleton<GameData> {
 
   void Start() {
     //Test
-    //TotalScore = 5000;
+   // TotalScore = 5000;
+   //PlayerPrefs.SetInt(Constants.totalCoinsAmount,20000);
   }
 }

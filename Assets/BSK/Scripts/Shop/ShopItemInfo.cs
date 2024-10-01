@@ -39,7 +39,7 @@ public class ShopItemInfo : MonoBehaviour
         itemStatus = shopItemStatus;
        
         index = itemIndex;
-        Debug.Log(itemStatus+"  in Sync +"+ index);
+//        Debug.Log(itemStatus+"  in Sync +"+ index);
         associatedItemPrefab = itemPrefab;
         switch (shopItemStatus) {
             case ShopItemStatus.locked:
@@ -51,6 +51,7 @@ public class ShopItemInfo : MonoBehaviour
                 ShopManager.Instance.DeselectAll();
                 selectImage.gameObject.SetActive(true);
                 boughtVisual.gameObject.SetActive(false);
+                
                 lockedImage.gameObject.SetActive(false);
                 ShopManager.Instance.selectedItem = this;
                 unlocked = true;
@@ -126,14 +127,17 @@ public class ShopItemInfo : MonoBehaviour
         Debug.Log("TryToPurchaseItem");
         ShopManager.Instance.confirmationPanel.transform.parent.gameObject.SetActive(false);
         if (price<=GameData.Instance.TotalScore) {
-            GameData.Instance.TotalScore -= price;
+            GameData.Instance.TotalScore = -price;
             itemStatus = ShopItemStatus.selectedAndBought;
             unlocked = true;
             lockedImage.gameObject.SetActive(false);
+            selectWhenLockedVisual.gameObject.SetActive(false);
             boughtVisual.gameObject.SetActive(true);
+            selectImage.gameObject.SetActive(true);
             ShopManager.Instance.SetShopItemStatus(index, itemStatus);
         } else {
             Debug.Log("No money no funny");
+            Debug.Log(GameData.Instance.TotalScore);
         }
     }
 

@@ -9,21 +9,21 @@ public class LevelProgressUiController : MonoBehaviour {
  public Image currentLvlImage, nextLvlImage;
  public Image fillerImage;
  private void Start() {
-  Debug.Log("Start happened");
+  //Debug.Log("Start happened");
   Sync();
  }
 
  public void Sync() {
   int maxUnlockedLevelId = PlayerPrefs.GetInt(Constants.maxLevelIndex,0);
-  Debug.Log(maxUnlockedLevelId+" Max unlocked LevelID");
+//  Debug.Log(maxUnlockedLevelId+" Max unlocked LevelID");
   if (maxUnlockedLevelId+1>=levelIcons.Count) {
-   Debug.Log("Levels maxed");
+   //Debug.Log("Levels maxed");
     this.gameObject.SetActive(false);
    return;
   } else {
    
    fillerImage.fillAmount=GameData.Instance.GetLevelUnlockProgress();
-   Debug.Log("fileer "+fillerImage.fillAmount);
+   //Debug.Log("fileer "+fillerImage.fillAmount);
    if (fillerImage.fillAmount>=1) {
     fillerImage.fillAmount = 0;
     PlayerPrefs.SetFloat(Constants.levelUnclokProgress,0);
