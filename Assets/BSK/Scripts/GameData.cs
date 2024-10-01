@@ -8,7 +8,7 @@ public class GameData : Singleton<GameData> {
   private int _totalScore;
   public UnityEvent onTotalScoreChanged;
 
-   static float amountToUnlockLevel=250;
+   static float amountToUnlockLevel=500;
   public int TotalScore {
     get {
       _totalScore = PlayerPrefs.GetInt(Constants.totalCoinsAmount);
@@ -41,6 +41,6 @@ public class GameData : Singleton<GameData> {
   void Start() {
     //Test
    // TotalScore = 5000;
-   PlayerPrefs.SetInt(Constants.totalCoinsAmount,20000);
+   //PlayerPrefs.SetInt(Constants.totalCoinsAmount,20000);
   }
 }
