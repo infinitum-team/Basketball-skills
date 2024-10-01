@@ -55,7 +55,7 @@ public class ShopItemInfo : MonoBehaviour
                 lockedImage.gameObject.SetActive(false);
                 ShopManager.Instance.selectedItem = this;
                 unlocked = true;
-                itemStatus = ShopItemStatus.selectedAndBought;
+                //itemStatus = ShopItemStatus.selectedAndBought;
                 break;
           
         }
@@ -86,6 +86,7 @@ public class ShopItemInfo : MonoBehaviour
                 selectWhenLockedVisual.gameObject.SetActive(true);
                 selectImage.gameObject.SetActive(false);
                 boughtVisual.gameObject.SetActive(false);
+                itemStatus = ShopItemStatus.selected;
             } else {
                 
                 Debug.Log("sdfsdfsdfsdfsdfds"+ itemStatus);
@@ -135,10 +136,13 @@ public class ShopItemInfo : MonoBehaviour
             boughtVisual.gameObject.SetActive(true);
             selectImage.gameObject.SetActive(true);
             ShopManager.Instance.SetShopItemStatus(index, itemStatus);
+            ShopManager.Instance.buyButton.gameObject.SetActive(false);
         } else {
-            Debug.Log("No money no funny");
-            Debug.Log(GameData.Instance.TotalScore);
+            ShopManager.Instance.noMoneyPanel.gameObject.SetActive(true);
+            //Debug.Log("No money no funny");
+            //Debug.Log(GameData.Instance.TotalScore);
         }
+        ShopManager.Instance.confirmationPanel.yesButton.onClick.RemoveAllListeners();
     }
 
 }

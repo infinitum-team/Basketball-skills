@@ -15,6 +15,7 @@ public class ShopManager : Singleton<ShopManager> {
     public ShopItemInfo selectedItem;
     public Button buyButton;
     public ConfirmationPanel confirmationPanel;
+    public GameObject noMoneyPanel;
     public GameObject earnMoreCoinsPanel;
     public GameObject ItemsUIPanel;
     public GameObject shopItemPrefab;
