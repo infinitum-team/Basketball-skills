@@ -7,7 +7,7 @@ public class Ball : MonoBehaviour {
 	[HideInInspector]
 	public bool thrown, floored, passed1, passed2, failed, goaled, special, clear;
 	private float delayTimer;
-	private Color col;
+//	private Color col;
 	private float distance;
 	[HideInInspector]
 	public float maxHeight;
@@ -24,7 +24,7 @@ public class Ball : MonoBehaviour {
     public static event FailAction OnFail;
 	
 	void Awake(){
-		col = GetComponent<Renderer>().material.color;
+		//col = GetComponentInChildren<Renderer>().material.color;
 		ring = GameObject.FindWithTag("ring");
 		audioSource = GetComponent<AudioSource>();
 		thisRigidbody = GetComponent<Rigidbody>();
@@ -53,24 +53,24 @@ public class Ball : MonoBehaviour {
 	void FadeOut(){
 		delayTimer += Time.deltaTime;
 		if(delayTimer > 1.0f) {
-			if(GetComponent<Renderer>().material != fadeMaterial)
-				GetComponent<Renderer>().material = fadeMaterial;
-			col.a -=0.01f;
-			GetComponent<Renderer>().material.color = col;
-			if(col.a <= 0) {
+			if(GetComponentInChildren<Renderer>().material != fadeMaterial)
+				//GetComponentInChildren<Renderer>().material = fadeMaterial;
+			//col.a -=0.01f;
+		//	GetComponentInChildren<Renderer>().material.color = col;
+		//	if(col.a <= 0) {
 				ResetBall();
 				gameObject.SetActive(false);
-			}
+		//	}
 		}
 	}
 	
 	public void ResetBall(){
 		thrown = floored = passed1 = passed2 = failed = goaled = special = false;
 		delayTimer = 0;
-		col.a = 1;
+		//col.a = 1;
 		clear = true;
-		GetComponent<Renderer>().material = standardMaterial;
-		GetComponent<Renderer>().material.color = col;
+		//GetComponentInChildren<Renderer>().material = standardMaterial;
+		//GetComponentInChildren<Renderer>().material.color = col;
 	}
 	
 	public void SetThrown(){
