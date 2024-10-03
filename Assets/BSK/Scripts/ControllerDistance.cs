@@ -115,7 +115,7 @@ public class ControllerDistance : MonoBehaviour {
 			GameController.data.Complete();
 		
 		if(distance > PlayerPrefs.GetInt("distanceBestScore",0)){
-			bestDistanceTxt.text = "RECORD - " +distance.ToString()+"m";
+			bestDistanceTxt.text = "" +distance.ToString()+"m";
 			PlayerPrefs.SetInt("distanceBestScore",distance);
 			if(lastRecord > 0 && !hitRecord) {
 				HitNewRecord();
@@ -146,6 +146,6 @@ public class ControllerDistance : MonoBehaviour {
 			newBallPos = new Vector3(0, Random.Range(3.0f,7.0f), 0);
 		distanceTxt.text = this.distance.ToString()+"m";
 		lastRecord = PlayerPrefs.GetInt("distanceBestScore",1);
-		bestDistanceTxt.text = "RECORD - " +lastRecord+"m";
+		bestDistanceTxt.text = "" +lastRecord+"m";
 	}
 }

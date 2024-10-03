@@ -241,7 +241,7 @@ public class ControllerTimeAttack : MonoBehaviour {
 		GameData.Instance.TotalScore += score / 2;
 		GameData.Instance.SetLevelUnlockProgress(this.score);
 		if(this.score > PlayerPrefs.GetInt("timeAttackBestScore",0)){
-			bestScoreTxt.text = "BEST SCORE - " +this.score.ToString();
+			bestScoreTxt.text = "" +this.score.ToString();
 			PlayerPrefs.SetInt("timeAttackBestScore",this.score);
 			if(lastRecord > 0 && !hitRecord) {
 				HitNewRecord();
@@ -269,7 +269,7 @@ public class ControllerTimeAttack : MonoBehaviour {
 		timeSlider.value = timeSlider.maxValue;
 		scoreTxt.text = this.score.ToString();
 		lastRecord = PlayerPrefs.GetInt("timeAttackBestScore",0);
-		bestScoreTxt.text = "BEST SCORE - " +lastRecord;
+		bestScoreTxt.text = "" +lastRecord;
 	}
 	
 	private Vector3 GetRandomPosInCollider(){
