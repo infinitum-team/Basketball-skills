@@ -36,8 +36,14 @@ public class GameData : Singleton<GameData> {
   public float  GetLevelUnlockProgress() {
     return PlayerPrefs.GetFloat(Constants.levelUnclokProgress, 0);
   }
- 
 
+  public bool IsTutorialPassed() {
+    return PlayerPrefs.GetInt(Constants.tutorialState, 0) != 0;
+  }
+
+  public void PassTheTutorial() {
+    PlayerPrefs.SetInt(Constants.tutorialState, 1);
+  }
   void Start() {
     //Test
    // TotalScore = 5000;

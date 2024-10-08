@@ -13,4 +13,5 @@ public static class Constants
     public static string levelUnclokProgress = "levelUnlockProgress";
     public static string soundlevel = "sound";
     public static string vfxLevel="vfx";
+    public static string tutorialState = "tutorialState";
 }
