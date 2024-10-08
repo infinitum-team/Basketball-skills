@@ -25,7 +25,7 @@ public class ResultPanel : MonoBehaviour {
          }
          fillerImage.transform.parent.gameObject.SetActive(false);
       } else {
-         fillerText.text = "YOU ARE " + GameData.Instance.GetLevelUnlockProgress() * 100 + "% " +
+         fillerText.text = "YOU ARE " + (int)GameData.Instance.GetLevelUnlockProgress() * 100 + "% " +
                            "CLOSER TO THE NEW LEVEL";
          fillerImage.fillAmount = GameData.Instance.GetLevelUnlockProgress();
       }

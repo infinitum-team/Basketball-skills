@@ -41,6 +41,6 @@ public class GameData : Singleton<GameData> {
   void Start() {
     //Test
    // TotalScore = 5000;
-   //PlayerPrefs.SetInt(Constants.totalCoinsAmount,20000);
+  // PlayerPrefs.SetInt(Constants.totalCoinsAmount,20000);
   }
 }
