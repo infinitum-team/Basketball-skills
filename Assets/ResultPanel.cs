@@ -25,7 +25,8 @@ public class ResultPanel : MonoBehaviour {
          }
          fillerImage.transform.parent.gameObject.SetActive(false);
       } else {
-         fillerText.text = "YOU ARE " + (int)GameData.Instance.GetLevelUnlockProgress() * 100 + "% " +
+         float roundedValue = (float)Math.Round(GameData.Instance.GetLevelUnlockProgress(), 1);
+         fillerText.text = "YOU ARE " + roundedValue * 100 + "% " +
                            "CLOSER TO THE NEW LEVEL";
          fillerImage.fillAmount = GameData.Instance.GetLevelUnlockProgress();
       }
