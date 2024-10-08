@@ -252,7 +252,7 @@ public class ControllerArcade : MonoBehaviour {
 		this.score += score;
 		scoreTxt.text = this.score.ToString();
 		resultScoreTxt.text = this.score.ToString();
-		GameData.Instance.TotalScore += score / 2;
+		GameData.Instance.TotalScore = score / 2;
 		GameData.Instance.SetLevelUnlockProgress(this.score);
 		coinsEarnedTxt.text = (this.score / 2).ToString();
 		if(this.score > PlayerPrefs.GetInt("arcadeBestScore",0)){

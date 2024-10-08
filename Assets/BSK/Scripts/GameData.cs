@@ -15,7 +15,7 @@ public class GameData : Singleton<GameData> {
       return _totalScore;
     }
     set {
-      _totalScore = value+PlayerPrefs.GetInt(Constants.totalCoinsAmount);
+      _totalScore = PlayerPrefs.GetInt(Constants.totalCoinsAmount)+value;
       PlayerPrefs.SetInt(Constants.totalCoinsAmount, _totalScore);
       onTotalScoreChanged.Invoke();
     }
