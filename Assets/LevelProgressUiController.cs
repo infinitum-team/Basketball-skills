@@ -13,6 +13,12 @@ public class LevelProgressUiController : MonoBehaviour {
   Sync();
  }
 
+ private void OnEnable() {
+  if (PlayerPrefs.GetInt(Constants.maxLevelIndex, 0) + 1 >= levelIcons.Count) {
+   this.gameObject.SetActive(false);
+  }
+ }
+
  public void Sync() {
   int maxUnlockedLevelId = PlayerPrefs.GetInt(Constants.maxLevelIndex,0);
 //  Debug.Log(maxUnlockedLevelId+" Max unlocked LevelID");

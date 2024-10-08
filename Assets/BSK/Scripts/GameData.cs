@@ -8,7 +8,7 @@ public class GameData : Singleton<GameData> {
   private int _totalScore;
   public UnityEvent onTotalScoreChanged;
 
-   static float amountToUnlockLevel=500;
+   static float amountToUnlockLevel=1;
   public int TotalScore {
     get {
       _totalScore = PlayerPrefs.GetInt(Constants.totalCoinsAmount);
