@@ -23,7 +23,7 @@ public class Shooter : MonoBehaviour {
 	private GameObject SpawnedObjects;							//A container object to keep there all spawned object. Keeps hierarchy clean.
 	private Vector3 ThrowForce;									//A vector that defines direction and power of the throw
 	private bool needBall;										//A booalen to know if we need to spawn new ball
-	private bool outOfscreen;
+	private bool outOfscreen=true;
 	
     void Awake () {
 		SpawnedObjects = new GameObject("SpawnedObjects");
@@ -77,13 +77,14 @@ public class Shooter : MonoBehaviour {
 			UpdateTrajectory(currentBall.transform.position, ThrowForce/ballRigidbody.mass);
 			float xPos = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
 			float yPos = Camera.main.ScreenToViewportPoint(Input.mousePosition).y;
-			if(yPos < 0.03f || yPos > 0.97f || xPos < 0.03f || xPos > 0.97f) {
+			/*if(yPos < 0.03f || yPos > 0.97f || xPos < 0.03f || xPos > 0.97f) {
 				outOfscreen = true;
 				isPressed = false;
 				ClearDots();
 			} else {
 				outOfscreen = false;
-			}
+			}*/
+			outOfscreen = false;
 		}
 	}
  
