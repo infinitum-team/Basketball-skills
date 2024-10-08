@@ -8,7 +8,9 @@ public class GameData : Singleton<GameData> {
   private int _totalScore;
   public UnityEvent onTotalScoreChanged;
 
-   static float amountToUnlockLevel=1000;
+   static float amountToUnlockLevel=10000;
+   
+   
   public int TotalScore {
     get {
       _totalScore = PlayerPrefs.GetInt(Constants.totalCoinsAmount);
@@ -21,6 +23,7 @@ public class GameData : Singleton<GameData> {
     }
   }
   public void SetLevelUnlockProgress(int score) {
+    amountToUnlockLevel=amountToUnlockLevel*(PlayerPrefs.GetInt(Constants.maxLevelIndex,0)+1);
     float result=(score / amountToUnlockLevel);
     Debug.Log("Amount To Unlock level: "+amountToUnlockLevel);
     Debug.Log("Score: "+score+" Result ---- "+result);

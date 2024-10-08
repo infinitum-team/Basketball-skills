@@ -18,7 +18,7 @@ public class ModeButton : MonoBehaviour {
     MenuButtonsController.Instance.playButton.onClick.RemoveAllListeners();
     MenuButtonsController.Instance.DeselectAll();
     modeButton.image.color = Color.white;
-    transform.GetComponent<RectTransform>().localScale = new Vector3(1.3f, 1.3f, 1.3f);
+   // transform.GetComponent<RectTransform>().localScale = new Vector3(1.3f, 1.3f, 1.3f);
     switch (buttonType) {
             case ButtonType.Arcade:
               MenuButtonsController.Instance.playButton.onClick.AddListener(FunctionArcade);
@@ -33,7 +33,7 @@ public class ModeButton : MonoBehaviour {
   }
 
   public void Deselect() {
-    transform.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+   // transform.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
     modeButton.image.color = blackColor;
   }
   
