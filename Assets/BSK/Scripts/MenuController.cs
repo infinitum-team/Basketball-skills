@@ -2,8 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using MM;
 
-public class MenuController : MonoBehaviour {
+public class MenuController : Singleton<MenuController> {
 	
 	public GameObject panelSettings;
 	public Toggle soundToggle;
