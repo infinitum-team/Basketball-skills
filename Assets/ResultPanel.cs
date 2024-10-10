@@ -11,9 +11,22 @@ public class ResultPanel : MonoBehaviour {
    public Text fillerText;
    public Button PressToChooseLevelBtn;
 
-   private void Start() { 
-      PressToChooseLevelBtn.onClick.AddListener((() => 
-         GameController.data.loadMenu()));
+   private void Start() {
+      PressToChooseLevelBtn.onClick.AddListener((() =>
+         //GameController.data.loadMenu()));
+         SelectLevelIfUnlocked()));
+
+   }
+
+   private void SelectLevelIfUnlocked() {
+      int maxUnlockedLevel = PlayerPrefs.GetInt(Constants.maxLevelIndex);
+      if (maxUnlockedLevel<4) {
+         maxUnlockedLevel += 1;
+      } else {
+         maxUnlockedLevel = 4;
+      }
+      PlayerPrefs.SetInt(Constants.currentLevelIndex,maxUnlockedLevel);
+      GameController.data.loadMenu();
    }
 
    private void OnEnable() {
@@ -25,7 +38,7 @@ public class ResultPanel : MonoBehaviour {
          }
          fillerImage.transform.parent.gameObject.SetActive(false);
       } else {
-         float roundedValue = (float)Math.Round(GameData.Instance.GetLevelUnlockProgress(), 1);
+         float roundedValue = (float)Math.Round(GameData.Instance.GetLevelUnlockProgress(), 2);
          fillerText.text = "YOU ARE " + roundedValue * 100 + "% " +
                            "CLOSER TO THE NEW LEVEL";
          fillerImage.fillAmount = GameData.Instance.GetLevelUnlockProgress();

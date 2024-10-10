@@ -33,10 +33,16 @@ public class LevelProgressUiController : MonoBehaviour {
    if (fillerImage.fillAmount>=1) {
     fillerImage.fillAmount = 0;
     PlayerPrefs.SetFloat(Constants.levelUnclokProgress,0);
+    Debug.Log("ganulda");
     LevelManager.Instance.UnlockNewLevel(maxUnlockedLevelId+1);
    }
    currentLvlImage.sprite = levelIcons[PlayerPrefs.GetInt(Constants.maxLevelIndex,0)];
-   nextLvlImage.sprite = levelIcons[PlayerPrefs.GetInt(Constants.maxLevelIndex,0) + 1];
+   if (PlayerPrefs.GetInt(Constants.maxLevelIndex,0) + 1<4) {
+    nextLvlImage.sprite = levelIcons[PlayerPrefs.GetInt(Constants.maxLevelIndex,0) + 1];
+   } else {
+    nextLvlImage.sprite = levelIcons[PlayerPrefs.GetInt(Constants.maxLevelIndex,0)];
+   }
+  
   }
   
  }
