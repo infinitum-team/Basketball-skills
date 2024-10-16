@@ -7,7 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class LevelManager : Singleton<LevelManager> {
  //  public List<GameObject> levels;
-
+ public GameMode gameMode;
    [SerializeField]
    private List<AssetReference> levelAssets;
    private Dictionary<string, AsyncOperationHandle<GameObject>> loadedLevels = new Dictionary<string, AsyncOperationHandle<GameObject>>();
@@ -69,6 +69,8 @@ public class LevelManager : Singleton<LevelManager> {
       }
    }
 
-
+public enum GameMode {
+   Arcade,Time,Distance
+}
   
 }

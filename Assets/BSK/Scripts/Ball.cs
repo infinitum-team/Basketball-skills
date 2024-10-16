@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
+using Random = UnityEngine.Random;
 
 //This script works with its ball. Inter alia it sends an events to any listeners about its actions like thorowed, goaled, failed.
 public class Ball : MonoBehaviour {
@@ -28,8 +31,15 @@ public class Ball : MonoBehaviour {
 		ring = GameObject.FindWithTag("ring");
 		audioSource = GetComponent<AudioSource>();
 		thisRigidbody = GetComponent<Rigidbody>();
+		
 	}
-	
+
+	private void Start() {
+		if (LevelManager.Instance.gameMode==LevelManager.GameMode.Distance || LevelManager.Instance.gameMode==LevelManager.GameMode.Time) {
+			GetComponentInChildren<OutlineFx.OutlineFx>().enabled = false;
+		}
+	}
+
 	void Update(){
 		if(failed || goaled) {
 			FadeOut();
