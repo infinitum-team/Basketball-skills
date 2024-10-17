@@ -8,8 +8,23 @@ public class RotateAndLook : MonoBehaviour {
 	public float speed = 10;
 	
 	
-	void Update () {
-		transform.RotateAround(target.position, Vector3.up, speed * Time.deltaTime);
+	public float angleLimit = 30f; // Maximum angle to rotate
+
+	private float currentAngle = 0f;
+
+	void Update()
+	{
+		// Calculate the angle with Mathf.PingPong to loop between -angleLimit and +angleLimit
+		currentAngle = Mathf.PingPong(Time.time * speed, angleLimit * 2) - angleLimit;
+
+		// Rotate the camera around the target by the calculated angle
+		transform.position = target.position + Quaternion.Euler(0, currentAngle, 0) * Vector3.back * 10f;
+
+		// Make the camera look at the target
 		transform.LookAt(target.position);
 	}
+	/*void Update () {
+		transform.RotateAround(target.position, Vector3.up, speed * Time.deltaTime);
+		transform.LookAt(target.position);
+	}*/
 }
