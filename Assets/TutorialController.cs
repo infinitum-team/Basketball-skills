@@ -8,6 +8,8 @@ public class TutorialController : MonoBehaviour {
   public GameObject handAnim;
   public GameObject releaseObject;
   private bool tutorialisActive = false;
+  public GameObject tutorialBall;
+  public GameObject ballTxt;
 
   private void Update() {
     if (tutorialisActive) {
@@ -17,12 +19,19 @@ public class TutorialController : MonoBehaviour {
       }
       if (Input.GetMouseButtonUp(0)) {
         tutorialisActive = false;
-        GameData.Instance.PassTheTutorial();
-        tutorialParent.gameObject.SetActive(false);
+        tutorialBall.gameObject.SetActive(true);
+        ballTxt.gameObject.SetActive(true);
+        releaseObject.gameObject.SetActive(false);
+        Invoke(nameof(PassTheTutorial),15f);
       }
     }
   }
 
+  private void PassTheTutorial() {
+    GameData.Instance.PassTheTutorial();
+    tutorialBall.gameObject.SetActive(false);
+    tutorialParent.gameObject.SetActive(false);
+  }
   private void Start() {
     if (!GameData.Instance.IsTutorialPassed()) {
        tutorialParent.SetActive(true);
